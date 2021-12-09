@@ -1,0 +1,77 @@
+class ConvoList extends StatefulWidget {
+  ConvoList(
+      {Key? key,
+      required this.name,
+      required this.messageText,
+      required this.imageURL,
+      required this.time,
+      required this.isRead})
+      : super(key: key);
+  String name, messageText, imageURL, time;
+  bool isRead;
+  @override
+  _ConvoListState createState() => _ConvoListState();
+}
+
+class _ConvoListState extends State<ConvoList> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatDetail()));
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        child: Row(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(widget.imageURL),
+                    maxRadius: 30,
+                  ),
+                  addHorizontal(16),
+                  Expanded(
+                    child: Container(
+                      color: Colors.transparent,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            widget.name,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          addVertical(6),
+                          Text(
+                            widget.messageText,
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.grey.shade600,
+                              fontWeight: widget.isRead
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  addHorizontal(2),
+                  Text(
+                    widget.time,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight:
+                          widget.isRead ? FontWeight.bold : FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
