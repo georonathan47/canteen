@@ -30,7 +30,6 @@ class _profileLandingState extends State<profileLanding> {
           ),
         ),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               height: MediaQuery.of(context).size.height * 0.25,
@@ -42,65 +41,63 @@ class _profileLandingState extends State<profileLanding> {
                 ),
               ),
             ),
-            Expanded(
-              child: ClipRRect(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 45.0,
-                    // bottom: 45.0,
-                    left: 35,
-                    right: 35,
-                  ),
-                  child: Form(
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.7,
-                      child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextFormField(),
-                          // addVertical(25),
-                          TextFormField(),
-                          // addVertical(25),
-                          TextFormField(),
-                        ],
+            // addVertical(20),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 35,
+                right: 35,
+              ),
+              child: Expanded(
+                child: Form(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextFormField(),
+                      addVertical(10),
+                      TextFormField(),
+                      addVertical(10),
+                      TextFormField(),
+                      addVertical(
+                        MediaQuery.of(context).size.height * .175,
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {},
+                              child: Text(
+                                "CANCEL",
+                                style: GoogleFonts.lato(
+                                  textStyle: themeData.textTheme.headline6!
+                                      .copyWith(
+                                    letterSpacing: 0.75,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                "SAVE",
+                                style: GoogleFonts.lato(
+                                  textStyle: themeData.textTheme.headline6!
+                                      .copyWith(
+                                    letterSpacing: 1,
+                                    fontWeight: FontWeight.w600,
+                                    color: white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ),
-            addVertical(5),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlinedButton(
-                    onPressed: () {},
-                    child: Text(
-                      "CANCEL",
-                      style: GoogleFonts.lato(
-                        textStyle: themeData.textTheme.headline6!.copyWith(
-                          letterSpacing: 0.75,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      "SAVE",
-                      style: GoogleFonts.lato(
-                        textStyle: themeData.textTheme.headline6!.copyWith(
-                          letterSpacing: 1,
-                          fontWeight: FontWeight.w600,
-                          color: white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ),
           ],

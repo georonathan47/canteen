@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+// import 'package:test/core/constants/colors.dart';
 
 import 'features/Food/presentation/pages/fav_Landing.dart';
 import 'features/Food/presentation/pages/home_Landing.dart';
@@ -37,7 +38,7 @@ class _LandingState extends State<Landing> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.lime[400],
+        backgroundColor: Colors.blueGrey[200],
         appBar: AppBar(
           elevation: 0.0,
           leading: IconButton(
