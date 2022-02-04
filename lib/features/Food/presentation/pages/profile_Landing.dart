@@ -6,7 +6,7 @@ import 'package:test/core/constants/colors.dart';
 import 'package:test/core/constants/widgetFunction.dart';
 
 class profileLanding extends StatefulWidget {
-  const profileLanding({Key? key}) : super(key: key);
+  const profileLanding({Key key}) : super(key: key);
 
   @override
   _profileLandingState createState() => _profileLandingState();
@@ -70,7 +70,7 @@ class _profileLandingState extends State<profileLanding> {
                               child: Text(
                                 "CANCEL",
                                 style: GoogleFonts.lato(
-                                  textStyle: themeData.textTheme.headline6!
+                                  textStyle: themeData.textTheme.headline6
                                       .copyWith(
                                     letterSpacing: 0.75,
                                     fontWeight: FontWeight.w600,
@@ -83,7 +83,7 @@ class _profileLandingState extends State<profileLanding> {
                               child: Text(
                                 "SAVE",
                                 style: GoogleFonts.lato(
-                                  textStyle: themeData.textTheme.headline6!
+                                  textStyle: themeData.textTheme.headline6
                                       .copyWith(
                                     letterSpacing: 1,
                                     fontWeight: FontWeight.w600,

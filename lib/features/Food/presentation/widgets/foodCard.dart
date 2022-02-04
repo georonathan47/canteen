@@ -3,25 +3,23 @@
 import 'package:test/core/constants/colors.dart';
 import 'package:test/core/constants/widgetFunction.dart';
 import 'package:test/features/Cart/presentation/pages/cartScreen.dart';
-import 'package:test/features/Food/data/models/foodModel.dart';
-import 'package:test/features/Food/data/repositories/foodsAvailable.dart';
-// import 'package:test/features/Food/presentation/widgets/addToCart.dart';
+
 import 'package:test/features/Food/presentation/widgets/added.dart';
-import 'package:test/features/Food/presentation/widgets/foodList.dart';
+
 import 'package:flutter/material.dart';
 
 class FoodDetail extends StatelessWidget {
   final String name, description, imageURL;
   final double smprice, mdprice, lgprice;
   const FoodDetail({
-    Key? key,
-    required this.name,
-    required this.imageURL,
-    required this.smprice,
-    required this.mdprice,
-    required this.lgprice,
-    required this.description,
-    required this.index,
+    Key key,
+    @required this.name,
+    @required this.imageURL,
+    @required this.smprice,
+    @required this.mdprice,
+    @required this.lgprice,
+    @required this.description,
+    @required this.index,
   }) : super(key: key);
 
 //   @override
@@ -97,8 +95,7 @@ class FoodDetail extends StatelessWidget {
                                 child: Text(
                                   name,
                                   textAlign: TextAlign.center,
-                                  style:
-                                      themeData.textTheme.headline5!.copyWith(
+                                  style: themeData.textTheme.headline5.copyWith(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                     color: white,
@@ -141,7 +138,7 @@ class FoodDetail extends StatelessWidget {
                                       Text(
                                         "Description",
                                         textAlign: TextAlign.justify,
-                                        style: themeData.textTheme.headline4!
+                                        style: themeData.textTheme.headline4
                                             .copyWith(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22,
@@ -204,17 +201,18 @@ class FoodDetail extends StatelessWidget {
                         child: ListView.builder(
                           physics: const BouncingScrollPhysics(),
                           reverse: true,
-                          itemCount: foodsAvailable.length,
+                          // itemCount: _foodsAvailable.length,
                           itemBuilder: (context, index) {
-                            return FoodList(
-                              index: index,
-                              name: foodsAvailable[index].name,
-                              description: foodsAvailable[index].description,
-                              lgprice: foodsAvailable[index].lgprice,
-                              mdprice: foodsAvailable[index].mdprice,
-                              smprice: foodsAvailable[index].smprice,
-                              imageURL: foodsAvailable[index].imageURL,
-                            );
+                            return Container();
+                            // return FoodList(
+                            //   index: index,
+                            //   name: foodsAvailable[index].name,
+                            //   description: foodsAvailable[index].description,
+                            //   lgprice: foodsAvailable[index].lgprice,
+                            //   mdprice: foodsAvailable[index].mdprice,
+                            //   smprice: foodsAvailable[index].smprice,
+                            //   imageURL: foodsAvailable[index].imageURL,
+                            // );
                           },
                         ),
                       ),

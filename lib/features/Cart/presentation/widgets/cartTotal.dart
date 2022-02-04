@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, unused_local_variable, unused_field
+// ignore_for_file: file_names,
 
 import 'dart:io';
 import 'dart:math';
@@ -12,15 +12,14 @@ import 'package:test/features/Cart/data/datasources/cartController.dart';
 
 
 class CartTotal extends StatefulWidget {
-  // final String email;
-  const CartTotal({Key? key}) : super(key: key);
+  const CartTotal({Key key}) : super(key: key);
 
   @override
   State<CartTotal> createState() => _CartTotalState();
 }
 
 class _CartTotalState extends State<CartTotal> {
-  String? _ref;
+  String _ref;
 
   void setRef() {
     Random rand = Random();
@@ -54,8 +53,8 @@ class _CartTotalState extends State<CartTotal> {
     final CartController controller = Get.find();
 
     return Obx(
-      () => notZero ? Container(
-        height: MediaQuery.of(context).size.height / 5.5,
+      () => Container(
+        height: MediaQuery.of(context).size.height / 3.5,
         decoration: BoxDecoration(
           color: Colors.cyan[700],
           borderRadius: const BorderRadius.only(
@@ -74,7 +73,7 @@ class _CartTotalState extends State<CartTotal> {
                   children: [
                     Text(
                       'Total:',
-                      style: themeData.textTheme.headline5!.copyWith(
+                      style: themeData.textTheme.headline5.copyWith(
                         // fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -82,7 +81,7 @@ class _CartTotalState extends State<CartTotal> {
                     addVertical(4),
                     Text(
                       'GH₵ ${controller.total}',
-                      style: themeData.textTheme.headline5!.copyWith(
+                      style: themeData.textTheme.headline5.copyWith(
                         // fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
@@ -97,7 +96,7 @@ class _CartTotalState extends State<CartTotal> {
             ),
           ),
         ),
-      ) : Container(),
+      ),
     );
   }
 

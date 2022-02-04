@@ -5,31 +5,21 @@ import 'package:test/core/constants/colors.dart';
 import 'package:test/core/constants/widgetFunction.dart';
 import 'package:flutter/material.dart';
 import 'package:test/features/Cart/data/datasources/cartController.dart';
-import 'package:test/features/Food/data/models/foodModel.dart';
-import 'package:test/features/Food/data/repositories/foodsAvailable.dart';
-
 class added extends StatelessWidget {
   added({
-    Key? key,
-    required this.name,
-    required this.lgprice,
-    required this.mdprice,
-    required this.smprice,
-    required this.index,
+    Key key,
+    @required this.name,
+    @required this.lgprice,
+    @required this.mdprice,
+    @required this.smprice,
+    @required this.index,
   }) : super(key: key);
   final String name;
   final double lgprice, mdprice, smprice;
-//   @override
-//   addedState createState() => addedState();
-// }
-
-// class addedState extends State<added> {
   final int index;
-  final controller = Get.put(CartController());
+  CartController get controller => Get.put(CartController(index: index));
 
-  // get index => null;
-
-  // Food get product => controller.products;
+  // int get newIndex => index;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +36,7 @@ class added extends StatelessWidget {
             Center(
               child: Text(
                 "Prices GH₵:",
-                style: themeData.textTheme.subtitle1!.copyWith(
+                style: themeData.textTheme.subtitle1.copyWith(
                   color: black,
                   letterSpacing: 0.75,
                   fontWeight: FontWeight.bold,
@@ -60,7 +50,7 @@ class added extends StatelessWidget {
               children: [
                 Text(
                   "GH¢: $lgprice",
-                  style: themeData.textTheme.subtitle1!.copyWith(
+                  style: themeData.textTheme.subtitle1.copyWith(
                     color: Colors.lime,
                     letterSpacing: 0.75,
                     fontWeight: FontWeight.w600,
@@ -69,7 +59,7 @@ class added extends StatelessWidget {
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-                    controller.addProduct(Food.foodsAvailable[index]);
+                    // controller.addProduct(Food.foodsAvailable[index]);
                   },
                   icon: const Icon(Icons.add_circle_outline),
                 ),
@@ -81,7 +71,7 @@ class added extends StatelessWidget {
               children: [
                 Text(
                   "GH¢: $mdprice",
-                  style: themeData.textTheme.subtitle1!.copyWith(
+                  style: themeData.textTheme.subtitle1.copyWith(
                     color: Colors.lime,
                     letterSpacing: 0.75,
                     fontWeight: FontWeight.w600,
@@ -90,7 +80,7 @@ class added extends StatelessWidget {
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-                    controller.addProduct(Food.foodsAvailable[index]);
+                    // controller.addProduct(Food.foodsAvailable[index]);
                   },
                   icon: const Icon(Icons.add_circle_outline),
                 ),
@@ -102,7 +92,7 @@ class added extends StatelessWidget {
               children: [
                 Text(
                   "GH¢: $smprice",
-                  style: themeData.textTheme.subtitle1!.copyWith(
+                  style: themeData.textTheme.subtitle1.copyWith(
                     color: Colors.lime,
                     letterSpacing: 0.75,
                     fontWeight: FontWeight.w600,
@@ -111,7 +101,7 @@ class added extends StatelessWidget {
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-                    controller.addProduct(Food.foodsAvailable[index]);
+                    // controller.addProduct(Food.foodsAvailable[index]);
                   },
                   icon: const Icon(Icons.add_circle_outline),
                 ),

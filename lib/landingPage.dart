@@ -12,7 +12,7 @@ import 'features/Food/presentation/pages/searches_Landing.dart';
 import 'features/sidebar.dart';
 
 class Landing extends StatefulWidget {
-  const Landing({Key? key}) : super(key: key);
+  const Landing({Key key}) : super(key: key);
 
   @override
   _LandingState createState() => _LandingState();
@@ -32,7 +32,7 @@ class _LandingState extends State<Landing> {
   @override
   Widget build(BuildContext context) {
     int activePage = 0;
-    late PageController _pageController = PageController();
+    PageController _pageController = PageController();
 
     @override
     void initState() {

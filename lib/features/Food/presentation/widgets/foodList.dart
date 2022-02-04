@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+
 import 'package:test/core/constants/widgetFunction.dart';
 import 'package:flutter/material.dart';
 
@@ -7,14 +8,14 @@ import 'foodCard.dart';
 
 class FoodList extends StatefulWidget {
   const FoodList({
-    Key? key,
-    required this.name,
-    required this.description,
-    required this.mdprice,
-    required this.smprice,
-    required this.lgprice,
-    required this.imageURL,
-    required this.index,
+    Key key,
+    @required this.name,
+    @required this.description,
+    @required this.mdprice,
+    @required this.smprice,
+    @required this.lgprice,
+    @required this.imageURL,
+    @required this.index,
   }) : super(key: key);
 
   final String name, description, imageURL;

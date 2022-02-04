@@ -7,7 +7,7 @@ import 'package:test/features/Cart/presentation/widgets/cartTotal.dart';
 import '../widgets/cartProducts.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({Key? key,}) : super(key: key);
+  const CartScreen({Key key,}) : super(key: key);
     // final String image;
 
   @override

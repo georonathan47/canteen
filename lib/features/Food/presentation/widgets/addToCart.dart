@@ -7,11 +7,11 @@ import 'added.dart';
 
 class addToCart extends StatelessWidget {
   const addToCart({
-    Key? key,
-    required this.name,
-    required this.lgprice,
-    required this.mdprice,
-    required this.smprice,
+    Key key,
+    @required this.name,
+    @required this.lgprice,
+    @required this.mdprice,
+    @required this.smprice,
   }) : super(key: key);
   final String name;
   final double lgprice, mdprice, smprice;

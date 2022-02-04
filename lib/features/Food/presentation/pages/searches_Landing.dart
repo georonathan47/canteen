@@ -5,7 +5,7 @@ import 'package:test/core/constants/widgetFunction.dart';
 import 'package:test/core/services/firestore.dart';
 
 class searchLanding extends StatefulWidget {
-  const searchLanding({Key? key}) : super(key: key);
+  const searchLanding({Key key}) : super(key: key);
 
   @override
   _searchLandingState createState() => _searchLandingState();
@@ -20,7 +20,7 @@ class _searchLandingState extends State<searchLanding> {
     super.initState();
   }
 
-  QuerySnapshot? searchSnapshot;
+  QuerySnapshot searchSnapshot;
 
   initiateSearch() {
     _firestoreDB.getFoodsByName(searchController.text).then((val) => {

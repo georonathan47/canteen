@@ -1,11 +1,11 @@
 class ConvoList extends StatefulWidget {
   ConvoList(
-      {Key? key,
-      required this.name,
-      required this.messageText,
-      required this.imageURL,
-      required this.time,
-      required this.isRead})
+      {Key key,
+      @required this.name,
+      @required this.messageText,
+      @required this.imageURL,
+      @required this.time,
+      @required this.isRead})
       : super(key: key);
   String name, messageText, imageURL, time;
   bool isRead;

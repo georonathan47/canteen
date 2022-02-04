@@ -10,8 +10,8 @@ import 'package:test/features/Food/data/models/foodModel.dart';
 
 class CartProducts extends StatelessWidget {
   final CartController controller = Get.find();
-  CartProducts({Key? key, this.image}) : super(key: key);
-  final String? image;
+  CartProducts({Key key, this.image}) : super(key: key);
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +39,11 @@ class CartProductCard extends StatelessWidget {
   final CartController controller;
   final Food product;
   const CartProductCard({
-    Key? key,
-    required this.index,
-    required this.quantity,
-    required this.product,
-    required this.controller,
+    Key key,
+    @required this.index,
+    @required this.quantity,
+    @required this.product,
+    @required this.controller,
   }) : super(key: key);
 
   @override
@@ -63,8 +63,8 @@ class CartProductCard extends StatelessWidget {
           addHorizontal(20),
           Expanded(
             child: Text(
-              product.name,
-              style: themeData.textTheme.headline6!.copyWith(
+              product.food_name,
+              style: themeData.textTheme.headline6.copyWith(
                 letterSpacing: 0.45,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,

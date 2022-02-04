@@ -1,30 +1,25 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test/features/Food/data/models/foodModel.dart';
 
 class CartController extends GetxController {
-  int get index => Food.foodsAvailable[index] as int;
+  final int index;
+
+  CartController({@required this.index});
+  // bool get isLarge => _foodsAvailable[index].mdprice as bool;
+  // bool get isMedium => _foodsAvailable[index].mdprice as bool;
   final _foods = {}.obs;
 
   void addProduct(Food product) {
     if (_foods.containsKey(product)) {
-      // _foods[product] += 1;
-      // if (_foods.containsKey(Food.foodsAvailable[index].lgprice)) {
       _foods[product] += 1;
-      // lgPrice;
-      // // } else if (_foods.containsKey(Food.foodsAvailable[index].mdprice)) {
-      // _foods[product] += 1;
-      // mdPrice;
-      // // } else {
-      // _foods[product] += 1;
-      // smPrice;
-      // }
     } else {
       _foods[product] = 1;
     }
 
     Get.snackbar(
       "Food added to cart",
-      "Your ${product.name} has been added to the cart!",
+      "Your ${product.food_name} has been added to the cart!",
       snackPosition: SnackPosition.TOP,
       duration: const Duration(milliseconds: 1500),
     );
@@ -39,7 +34,7 @@ class CartController extends GetxController {
 
     Get.snackbar(
       "Food removed from cart",
-      "Your ${product.name} has been removed from the cart!",
+      "Your ${product.food_name} has been removed from the cart!",
       snackPosition: SnackPosition.TOP,
       duration: const Duration(milliseconds: 1000),
     );
@@ -50,21 +45,22 @@ class CartController extends GetxController {
       .toList();
 
   get lgPrice => _foods.entries
-      .map((product) => (product.key.mdprice) * product.value)
+      .map((product) => (product.key.lgprice) * product.value)
       .toList();
 
   get smPrice => _foods.entries
       .map((product) => (product.key.smprice) * product.value)
       .toList();
+
   get products => _foods;
 
   get productSubtotal => _foods.entries
-      .map((product) => product.key.price * product.value)
+      .map(((product) => product.key.smprice * product.value))
       .toList();
 
   get total => _foods.entries
-      .map((product) =>
-          ((product.key.deliveryPrice) + (product.key.mdprice)) * product.value)
+      .map((product) => (((product.key.deliveryPrice) + (product.key.mdprice)) *
+          product.value))
       .toList()
       .reduce((value, element) => value + element)
       .toStringAsFixed(2);
