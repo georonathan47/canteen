@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:test/core/services/firestore.dart';
 // import 'package:test/core/constants/colors.dart';
 
 import 'features/Food/presentation/pages/fav_Landing.dart';
@@ -19,6 +20,15 @@ class Landing extends StatefulWidget {
 
 class _LandingState extends State<Landing> {
   var _currentIndex = 0;
+  final FirestoreDB _firestoreDB = FirestoreDB();
+  final foodNameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    foodNameController.addListener(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     int activePage = 0;
@@ -47,9 +57,15 @@ class _LandingState extends State<Landing> {
           ),
           automaticallyImplyLeading: false,
           title: TextFormField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.search),
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.search),
               hintText: 'Search',
+              suffixIcon: IconButton(
+                onPressed: () {
+                  _firestoreDB.getFoodsByName(foodNameController.text);
+                },
+                icon: const Icon(Icons.search),
+              ),
             ),
           ),
         ),

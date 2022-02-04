@@ -23,6 +23,7 @@ class addToCart extends StatelessWidget {
       itemCount: foods.length,
       itemBuilder: (context, index) {
         return added(
+          index: index,
           name: foods[index].name,
           lgprice: foods[index].price,
           smprice: foods[index].price,

@@ -2,13 +2,15 @@
 
 import 'package:test/core/constants/colors.dart';
 import 'package:test/core/constants/widgetFunction.dart';
+import 'package:test/features/Cart/presentation/pages/cartScreen.dart';
 import 'package:test/features/Food/data/models/foodModel.dart';
+import 'package:test/features/Food/data/repositories/foodsAvailable.dart';
 // import 'package:test/features/Food/presentation/widgets/addToCart.dart';
 import 'package:test/features/Food/presentation/widgets/added.dart';
 import 'package:test/features/Food/presentation/widgets/foodList.dart';
 import 'package:flutter/material.dart';
 
-class FoodDetail extends StatefulWidget {
+class FoodDetail extends StatelessWidget {
   final String name, description, imageURL;
   final double smprice, mdprice, lgprice;
   const FoodDetail({
@@ -19,100 +21,40 @@ class FoodDetail extends StatefulWidget {
     required this.mdprice,
     required this.lgprice,
     required this.description,
+    required this.index,
   }) : super(key: key);
 
-  @override
-  State<FoodDetail> createState() => _FoodDetailState(
-        name,
-        smprice,
-        mdprice,
-        lgprice,
-        description,
-        imageURL,
-      );
-}
+//   @override
+//   State<FoodDetail> createState() => _FoodDetailState(
+//         name,
+//         smprice,
+//         mdprice,
+//         lgprice,
+//         description,
+//         imageURL,
+//       );
+// }
 
-class _FoodDetailState extends State<FoodDetail> {
-  _FoodDetailState(
-    name,
-    smprice,
-    mdprice,
-    lgprice,
-    description,
-    imageURL,
-  );
+// class _FoodDetailState extends State<FoodDetail> {
+//   _FoodDetailState(
+//     name,
+//     smprice,
+//     mdprice,
+//     lgprice,
+//     description,
+//     imageURL,
+//   );
+  final int index;
+
+//  int get index => Food.foodsAvailable[index];
 
   @override
   Widget build(BuildContext context) {
-    List<Food> foodsAvailable = [
-      const Food(
-        name: "Jollof Rice",
-        description: "Assorted Jollof Rice with beef or chicken",
-        imageURL:
-            "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/42788e49474248dba75fdfd47114024a/BFV43575_PartyRiceAroundAfrica-FB-V2.jpg?output-format=auto&output-quality=auto&resize=600:*",
-        lgprice: 15,
-        mdprice: 12,
-        smprice: 10,
-      ),
-      const Food(
-        name: "Fried Rice",
-        description: "Fried Rice with beef or chicken",
-        imageURL: "https://avnash.com/recipes/assets/img/recipe15.jpg",
-        lgprice: 15,
-        mdprice: 12,
-        smprice: 10,
-      ),
-      const Food(
-        name: "Fufu ",
-        description: "Fufu with Ab3nkwan plus Beef, Tilapia or Chicken",
-        imageURL:
-            "https://cdn.shopify.com/s/files/1/0121/2950/1242/articles/edf516a1ea586d366c40471f8ae5ba5e_800x.jpg?v=1590425707",
-        lgprice: 15,
-        mdprice: 12,
-        smprice: 10,
-      ),
-      const Food(
-        name: "Ampesie",
-        description: "Ampesie with Kontonmire and Tilapia",
-        imageURL:
-            "https://i.pinimg.com/originals/68/c8/0a/68c80a72fad86e0d3b9a0cff4d57f695.jpg",
-        lgprice: 15,
-        mdprice: 12,
-        smprice: 10,
-      ),
-      const Food(
-        name: "Fried Rice",
-        description: "Fried Rice with beef or chicken",
-        imageURL: "https://avnash.com/recipes/assets/img/recipe15.jpg",
-        lgprice: 15,
-        mdprice: 12,
-        smprice: 10,
-      ),
-      const Food(
-        name: "Fufu ",
-        description: "Fufu with Ab3nkwan plus Beef, Tilapia or Chicken",
-        imageURL:
-            "https://cdn.shopify.com/s/files/1/0121/2950/1242/articles/edf516a1ea586d366c40471f8ae5ba5e_800x.jpg?v=1590425707",
-        lgprice: 15,
-        mdprice: 12,
-        smprice: 10,
-      ),
-      const Food(
-        name: "Ampesie",
-        description: "Ampesie with Kontonmire and Tilapia",
-        imageURL:
-            "https://i.pinimg.com/originals/68/c8/0a/68c80a72fad86e0d3b9a0cff4d57f695.jpg",
-        lgprice: 15,
-        mdprice: 12,
-        smprice: 10,
-      ),
-    ];
     final ThemeData themeData = Theme.of(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(widget.name),
-          backgroundColor: Colors.transparent,
+          title: Text(name),
           elevation: 0.0,
         ),
         body: Container(
@@ -134,7 +76,7 @@ class _FoodDetailState extends State<FoodDetail> {
                     height: MediaQuery.of(context).size.height / 3,
                     child: Stack(
                       children: [
-                        Image.network(widget.imageURL),
+                        Image.network(imageURL),
                         Stack(
                           children: [
                             Padding(
@@ -144,7 +86,8 @@ class _FoodDetailState extends State<FoodDetail> {
                               ),
                               child: Container(
                                 width: 100,
-                                height: MediaQuery.of(context).size.height * 0.05,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.05,
                                 decoration: const BoxDecoration(
                                   color: black87,
                                   borderRadius: BorderRadius.all(
@@ -152,9 +95,10 @@ class _FoodDetailState extends State<FoodDetail> {
                                   ),
                                 ),
                                 child: Text(
-                                  widget.name,
+                                  name,
                                   textAlign: TextAlign.center,
-                                  style: themeData.textTheme.headline5!.copyWith(
+                                  style:
+                                      themeData.textTheme.headline5!.copyWith(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                     color: white,
@@ -190,12 +134,13 @@ class _FoodDetailState extends State<FoodDetail> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width * .435,
+                                  width:
+                                      MediaQuery.of(context).size.width * .435,
                                   child: Column(
                                     children: [
                                       Text(
                                         "Description",
-                                        textAlign: TextAlign.left,
+                                        textAlign: TextAlign.justify,
                                         style: themeData.textTheme.headline4!
                                             .copyWith(
                                           fontWeight: FontWeight.bold,
@@ -205,7 +150,7 @@ class _FoodDetailState extends State<FoodDetail> {
                                       ),
                                       addVertical(7.5),
                                       Text(
-                                        widget.description,
+                                        description,
                                         style: themeData.textTheme.subtitle1,
                                       ),
                                     ],
@@ -215,17 +160,21 @@ class _FoodDetailState extends State<FoodDetail> {
                                   child: Container(
                                     height: MediaQuery.of(context).size.height *
                                         0.115,
-                                    decoration: const BoxDecoration(color: white),
+                                    decoration:
+                                        const BoxDecoration(color: white),
                                     child: SingleChildScrollView(
                                       physics: const BouncingScrollPhysics(),
                                       child: SizedBox(
-                                        width: MediaQuery.of(context).size.width *
-                                            .45,
+                                        // height: double.infinity,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                .45,
                                         child: added(
-                                          lgprice: widget.lgprice,
-                                          name: widget.name,
-                                          smprice: widget.smprice,
-                                          mdprice: widget.mdprice,
+                                          index: index,
+                                          lgprice: lgprice,
+                                          name: name,
+                                          smprice: smprice,
+                                          mdprice: mdprice,
                                         ),
                                       ),
                                     ),
@@ -258,6 +207,7 @@ class _FoodDetailState extends State<FoodDetail> {
                           itemCount: foodsAvailable.length,
                           itemBuilder: (context, index) {
                             return FoodList(
+                              index: index,
                               name: foodsAvailable[index].name,
                               description: foodsAvailable[index].description,
                               lgprice: foodsAvailable[index].lgprice,
@@ -270,32 +220,22 @@ class _FoodDetailState extends State<FoodDetail> {
                       ),
                     ),
                   ),
+                  // Expanded(child,)
                 ],
               ),
             ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => _cartItems(),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CartScreen(),
+            ),
+          ),
           child: const Icon(Icons.shopping_cart, color: white),
         ),
       ),
     );
-  }
-
-  void _cartItems() {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 5),
-            child: Column(
-              children: const [
-                // Selected items
-                Text("Selected items"),
-              ],
-            ),
-          );
-        });
   }
 }

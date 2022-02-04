@@ -14,10 +14,12 @@ class FoodList extends StatefulWidget {
     required this.smprice,
     required this.lgprice,
     required this.imageURL,
+    required this.index,
   }) : super(key: key);
 
   final String name, description, imageURL;
   final double lgprice, mdprice, smprice;
+  final int index;
 
   @override
   State<FoodList> createState() => _FoodListState();
@@ -32,6 +34,7 @@ class _FoodListState extends State<FoodList> {
           context,
           MaterialPageRoute(
             builder: (context) => FoodDetail(
+              index: widget.index,
               name: widget.name,
               description: widget.description,
               imageURL: widget.imageURL,
