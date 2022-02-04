@@ -15,7 +15,10 @@ class FoodAPI {
       print(responses.reasonPhrase);
     }
     // change autority to host name
-    var uri = Uri.http("ktuapi.bsmtsports.com", "/api/food");
+    var uri = Uri.http("ktuapi.bsmtsports.com", "/api/food", {
+      "limit": "",
+      "start": "0",
+    });
 
     final response = await http.get(uri, headers: {});
 
@@ -23,7 +26,7 @@ class FoodAPI {
     List _temp = [];
 
     for (var i in data['food']) {
-      _temp.add(i['']);
+      _temp.add(i['content']['details']);
     }
 
     return Food.foodFromAPI(_temp);

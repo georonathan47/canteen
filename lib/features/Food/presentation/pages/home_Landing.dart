@@ -17,18 +17,18 @@ class homeLanding extends StatefulWidget {
 
 class _homeLandingState extends State<homeLanding> {
   List<Food> _foodsAvailable = [];
-  bool loading = true;
+  bool loading = false;
 
   @override
   void initState() {
     super.initState();
-    getFoods();
+    getFood();
   }
 
-  Future<void> getFoods() async {
+  Future<void> getFood() async {
     _foodsAvailable = await FoodAPI.getFoods();
     setState(() {
-      loading = false;
+      loading = true;
     });
     print(_foodsAvailable);
   }
@@ -50,14 +50,14 @@ class _homeLandingState extends State<homeLanding> {
               left: 0,
               right: 0,
               top: 0,
-              // alignment: Alignment.bottomCenter,
               child: Column(
-                children:  [
+                children: [
                   addVertical(MediaQuery.of(context).size.height * .35),
                   const CircularProgressIndicator.adaptive(),
                   addVertical(20),
                   const Text(
-                      "Fetching data from API... \n \t\t\t\t\t\t\t\t\tPlease wait...")
+                    "Fetching data from API... \n \t\t\t\t\t\t\t\t\tPlease wait...",
+                  )
                 ],
               ),
             )
@@ -67,12 +67,13 @@ class _homeLandingState extends State<homeLanding> {
               itemCount: _foodsAvailable.length,
               itemBuilder: (context, index) {
                 return Card(
+                  color: Colors.transparent,
                   child: FoodList(
                     index: index,
                     name: _foodsAvailable[index].food_name,
                     description: _foodsAvailable[index].description,
                     lgprice: _foodsAvailable[index].lgprice,
-                    mdprice: _foodsAvailable[index].mdprice,
+                    // mdprice: _foodsAvailable[index].mdprice,
                     smprice: _foodsAvailable[index].smprice,
                     imageURL: _foodsAvailable[index].imageURL,
                   ),

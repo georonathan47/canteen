@@ -3,27 +3,26 @@ import 'package:flutter/material.dart';
 
 class Food {
   final String food_name, description, imageURL;
-  final double lgprice, smprice, mdprice, deliveryPrice;
+  final double lgprice, smprice;
 
   Food({
     @required this.food_name,
     @required this.smprice,
-    @required this.lgprice,
-    @required this.mdprice,
-    @required this.imageURL,
+    // @required this.mdprice,
     @required this.description,
-    @required this.deliveryPrice,
+    this.imageURL,
+    this.lgprice,
   });
 
   factory Food.fromJson(dynamic json) {
     return Food(
-      food_name: json['name'] as String,
-      imageURL: json['imageURL'] as String,
+      food_name: json['food_name'] as String,
+      // imageURL: json['image'] as String,
       description: json['description'] as String,
-      smprice: json['smprice'] as double,
-      mdprice: json["mdprice"] as double,
-      lgprice: json['lgprice'] as double,
-      deliveryPrice: json['deliveryPrice'] as double,
+      smprice: json['price'] as double,
+      // mdprice: json["mdprice"] as double,
+      // lgprice: json['lgprice'] as double,
+      // deliveryPrice: json['deliveryPrice'] as double,
     );
   }
   static List<Food> foodFromAPI(List snapshot) {
