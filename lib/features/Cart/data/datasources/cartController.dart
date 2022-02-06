@@ -19,7 +19,7 @@ class CartController extends GetxController {
 
     Get.snackbar(
       "Food added to cart",
-      "Your ${product.food_name} has been added to the cart!",
+      "Your ${product.foodName} has been added to the cart!",
       snackPosition: SnackPosition.TOP,
       duration: const Duration(milliseconds: 1500),
     );
@@ -34,7 +34,7 @@ class CartController extends GetxController {
 
     Get.snackbar(
       "Food removed from cart",
-      "Your ${product.food_name} has been removed from the cart!",
+      "Your ${product.foodName} has been removed from the cart!",
       snackPosition: SnackPosition.TOP,
       duration: const Duration(milliseconds: 1000),
     );

@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:test/core/constants/colors.dart';
 import 'package:test/core/constants/widgetFunction.dart';
 import 'package:test/features/Food/data/models/food.api.dart';
@@ -26,7 +25,7 @@ class _homeLandingState extends State<homeLanding> {
   }
 
   Future<void> getFood() async {
-    _foodsAvailable = await FoodAPI.getFoods();
+    _foodsAvailable = await fetchFoods();
     setState(() {
       loading = true;
     });
@@ -44,42 +43,55 @@ class _homeLandingState extends State<homeLanding> {
           topRight: Radius.circular(35),
         ),
       ),
-      child: loading
-          ? Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              top: 0,
-              child: Column(
-                children: [
-                  addVertical(MediaQuery.of(context).size.height * .35),
-                  const CircularProgressIndicator.adaptive(),
-                  addVertical(20),
-                  const Text(
-                    "Fetching data from API... \n \t\t\t\t\t\t\t\t\tPlease wait...",
-                  )
-                ],
-              ),
-            )
-          : ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: _foodsAvailable.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  color: Colors.transparent,
-                  child: FoodList(
-                    index: index,
-                    name: _foodsAvailable[index].food_name,
-                    description: _foodsAvailable[index].description,
-                    lgprice: _foodsAvailable[index].lgprice,
-                    // mdprice: _foodsAvailable[index].mdprice,
-                    smprice: _foodsAvailable[index].smprice,
-                    imageURL: _foodsAvailable[index].imageURL,
-                  ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15),
+        child: Container(
+          child: FutureBuilder(
+            future: fetchFoods(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView.separated(
+                  itemCount: snapshot.data.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    Food food = snapshot.data[index];
+                    return GestureDetector(
+                      onTap: () {},
+                      child: Card(
+                        color: Colors.transparent,
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: Column(
+                              children: [
+                                !loading
+                                    ? Image.network(food.image)
+                                    : const Center(
+                                        child:
+                                            CircularProgressIndicator.adaptive(),
+                                      ),
+                                addVertical(
+                                    MediaQuery.of(context).size.height * 0.13),
+                                Expanded(
+                                  child: Text(food.foodName),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) => SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.045),
                 );
-              },
-            ),
+              }
+              return const Center(child: CircularProgressIndicator.adaptive());
+            },
+          ),
+        ),
+      ),
     );
   }
 }

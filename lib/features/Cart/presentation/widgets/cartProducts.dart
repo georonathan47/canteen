@@ -57,13 +57,13 @@ class CartProductCard extends StatelessWidget {
           CircleAvatar(
             radius: 35,
             backgroundImage: NetworkImage(
-              product.imageURL,
+              product.image,
             ),
           ),
           addHorizontal(20),
           Expanded(
             child: Text(
-              product.food_name,
+              product.foodName,
               style: themeData.textTheme.headline6.copyWith(
                 letterSpacing: 0.45,
                 fontWeight: FontWeight.bold,

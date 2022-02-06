@@ -37,7 +37,6 @@ class _searchLandingState extends State<searchLanding> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -61,35 +60,35 @@ class _searchLandingState extends State<searchLanding> {
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          child: Column(
-            children: [
-              TextField(
-                controller: searchController,
-                onChanged: (val) {
-                  searchController.text = val;
-                },
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide:
-                        const BorderSide(color: Colors.black87, width: 0.0),
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 0.7),
-                  ),
-                  hintText: 'Search Food...',
-                  hintStyle:
-                      const TextStyle(fontSize: 17, color: Colors.black54),
-                  suffixIcon: IconButton(
-                    onPressed: () => initiateSearch(),
-                    icon: const Icon(Icons.search),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          //   child: Column(
+          //     children: [
+          //       TextField(
+          //         controller: searchController,
+          //         onChanged: (val) {
+          //           searchController.text = val;
+          //         },
+          //         decoration: InputDecoration(
+          //           enabledBorder: OutlineInputBorder(
+          //             borderRadius: BorderRadius.circular(10),
+          //             borderSide:
+          //                 const BorderSide(color: Colors.black87, width: 0.0),
+          //           ),
+          //           focusedBorder: const OutlineInputBorder(
+          //             borderRadius: BorderRadius.all(Radius.circular(10)),
+          //             borderSide:
+          //                 BorderSide(color: Colors.blueAccent, width: 0.7),
+          //           ),
+          //           hintText: 'Search Food...',
+          //           hintStyle:
+          //               const TextStyle(fontSize: 17, color: Colors.black54),
+          //           suffixIcon: IconButton(
+          //             onPressed: () => initiateSearch(),
+          //             icon: const Icon(Icons.search),
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          // ),
         ),
       ),
     );
