@@ -9,13 +9,11 @@ class added extends StatelessWidget {
   added({
     Key key,
     @required this.name,
-    @required this.lgprice,
-    @required this.mdprice,
-    @required this.smprice,
+    @required this.price,
     @required this.index,
   }) : super(key: key);
   final String name;
-  final double lgprice, mdprice, smprice;
+  final double price;
   final int index;
   CartController get controller => Get.put(CartController(index: index));
 
@@ -35,7 +33,7 @@ class added extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                "Prices GH₵:",
+                "Price GH₵:",
                 style: themeData.textTheme.subtitle1.copyWith(
                   color: black,
                   letterSpacing: 0.75,
@@ -45,53 +43,12 @@ class added extends StatelessWidget {
               ),
             ),
             // addVertical(10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  "GH¢: $lgprice",
-                  style: themeData.textTheme.subtitle1.copyWith(
-                    color: Colors.lime,
-                    letterSpacing: 0.75,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {
-                    // controller.addProduct(Food.foodsAvailable[index]);
-                  },
-                  icon: const Icon(Icons.add_circle_outline),
-                ),
-              ],
-            ),
-            // addVertical(MediaQuery.of(context).size.height * 0.0),
+           
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "GH¢: $mdprice",
-                  style: themeData.textTheme.subtitle1.copyWith(
-                    color: Colors.lime,
-                    letterSpacing: 0.75,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {
-                    // controller.addProduct(Food.foodsAvailable[index]);
-                  },
-                  icon: const Icon(Icons.add_circle_outline),
-                ),
-              ],
-            ),
-            addVertical(MediaQuery.of(context).size.height * 0.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "GH¢: $smprice",
+                  "GH¢: $price",
                   style: themeData.textTheme.subtitle1.copyWith(
                     color: Colors.lime,
                     letterSpacing: 0.75,

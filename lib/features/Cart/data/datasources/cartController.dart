@@ -10,7 +10,7 @@ class CartController extends GetxController {
   // bool get isMedium => _foodsAvailable[index].mdprice as bool;
   final _foods = {}.obs;
 
-  void addProduct(Food product) {
+  void addProduct(FoodDetails product) {
     if (_foods.containsKey(product)) {
       _foods[product] += 1;
     } else {
@@ -25,7 +25,7 @@ class CartController extends GetxController {
     );
   }
 
-  void removeProduct(Food product) {
+  void removeProduct(FoodDetails product) {
     if (_foods.containsKey(product) && _foods[product] == 1) {
       _foods.removeWhere((key, value) => key == product);
     } else {

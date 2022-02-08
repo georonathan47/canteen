@@ -11,15 +11,13 @@ class FoodList extends StatefulWidget {
     Key key,
     @required this.name,
     @required this.description,
-    @required this.mdprice,
-    @required this.smprice,
-    @required this.lgprice,
+    @required this.price,
     @required this.imageURL,
     @required this.index,
   }) : super(key: key);
 
   final String name, description, imageURL;
-  final double lgprice, mdprice, smprice;
+  final double price;
   final int index;
 
   @override
@@ -39,9 +37,7 @@ class _FoodListState extends State<FoodList> {
               name: widget.name,
               description: widget.description,
               imageURL: widget.imageURL,
-              smprice: widget.smprice,
-              mdprice: widget.mdprice,
-              lgprice: widget.lgprice,
+              price: widget.price,
             ),
           ),
         );
@@ -76,7 +72,7 @@ class _FoodListState extends State<FoodList> {
                                 ),
                               ),
                               Text(
-                                "GH¢: ${widget.lgprice}",
+                                "GH¢: ${widget.price}",
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,

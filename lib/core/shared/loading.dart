@@ -18,7 +18,6 @@ class Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Container();
     List<Widget> widgetLsit = [];
     widgetLsit.add(child);
     if (isAsyncCall) {
@@ -27,7 +26,7 @@ class Loading extends StatelessWidget {
           Opacity(
             opacity: opacity,
             child: const ModalBarrier(
-              color: Colors.grey,
+              color: gold,
               dismissible: false,
             ),
           ),

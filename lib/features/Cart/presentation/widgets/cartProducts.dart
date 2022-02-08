@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test/core/constants/colors.dart';
 import 'package:test/core/constants/widgetFunction.dart';
+
 import 'package:test/features/Cart/data/datasources/cartController.dart';
 import 'package:test/features/Food/data/models/foodModel.dart';
 
@@ -37,7 +37,7 @@ class CartProducts extends StatelessWidget {
 class CartProductCard extends StatelessWidget {
   final int index, quantity;
   final CartController controller;
-  final Food product;
+  final FoodDetails product;
   const CartProductCard({
     Key key,
     @required this.index,

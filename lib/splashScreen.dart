@@ -1,9 +1,10 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:test/features/Authentication/presentation/pages/login.dart';
+import 'package:test/landingPage.dart';
 
 import 'core/constants/colors.dart';
-import 'landingPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key key}) : super(key: key);
@@ -35,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
       decoration: const BoxDecoration(color: white),
       child: Center(
         child: Image.asset(
-          "assets/images/MAKATA.jpg",
+          "assets/images/MAKATA.png",
           width: MediaQuery.of(context).size.width,
           // scale: 2.0,
         ),

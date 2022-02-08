@@ -7,7 +7,9 @@ import 'package:test/core/constants/constants.dart';
 import 'package:test/core/constants/widgetFunction.dart';
 import 'package:test/core/shared/loading.dart';
 import 'package:test/core/shared/makata.api.dart';
+import 'package:test/features/Authentication/data/models/auth.api.dart';
 import 'package:test/features/Authentication/data/models/authenticationModel.dart';
+import 'package:test/landingPage.dart';
 
 class Login extends StatefulWidget {
   final Function toggleView;
@@ -25,6 +27,8 @@ class _LoginState extends State<Login> {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
 
+  final MakataAPI _api = MakataAPI();
+
   bool loading = false;
   String error = "";
   bool isAPIcall = false;
@@ -41,6 +45,7 @@ class _LoginState extends State<Login> {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    authRequest;
     super.dispose();
   }
 
@@ -58,7 +63,6 @@ class _LoginState extends State<Login> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.cyan,
           title: Text(
             'Login Page',
             style: GoogleFonts.lato(
@@ -112,7 +116,7 @@ class _LoginState extends State<Login> {
                               child: Theme(
                                 data: ThemeData(
                                   brightness: Brightness.dark,
-                                  primarySwatch: Colors.cyan,
+                                  primarySwatch: Colors.amber,
                                   inputDecorationTheme:
                                       const InputDecorationTheme(
                                     labelStyle: TextStyle(
@@ -132,7 +136,7 @@ class _LoginState extends State<Login> {
                                         textStyle: const TextStyle(
                                           fontSize: 28,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.cyan,
+                                          color: purple,
                                           letterSpacing: 1.75,
                                           fontStyle: FontStyle.normal,
                                         ),
@@ -169,6 +173,7 @@ class _LoginState extends State<Login> {
                                               //! Signup button
                                               ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
+                                                  primary: gold,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -193,6 +198,7 @@ class _LoginState extends State<Login> {
                                               //! Login button
                                               ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
+                                                  primary: gold,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -217,15 +223,22 @@ class _LoginState extends State<Login> {
                                                       isAPIcall = true;
                                                     });
 
-                                                    MakataAPI makataAPI =
-                                                        MakataAPI();
-                                                    makataAPI
+                                                    _api
                                                         .login(authRequest)
                                                         .then((value) => {
                                                               setState(() {
                                                                 isAPIcall =
                                                                     false;
-                                                              })
+                                                              }),
+                                                              Navigator
+                                                                  .pushReplacement(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          const Landing(),
+                                                                ),
+                                                              )
                                                             });
                                                     print(authRequest.toJson());
                                                   }
@@ -300,10 +313,12 @@ class _LoginState extends State<Login> {
           ),
         ),
         border: InputBorder.none,
-        prefixIcon: const Icon(Icons.mail_outline_rounded),
-        fillColor: Colors.cyanAccent,
+        prefixIcon: isEmail
+            ? const Icon(Icons.mail_outline_rounded)
+            : const Icon(Icons.lock),
+        fillColor: Colors.purple,
         filled: true,
-        focusColor: const Color(0x00008baa),
+        focusColor: lightGold,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25),
           borderSide: const BorderSide(

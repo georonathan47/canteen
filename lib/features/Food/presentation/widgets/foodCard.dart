@@ -10,41 +10,18 @@ import 'package:flutter/material.dart';
 
 class FoodDetail extends StatelessWidget {
   final String name, description, imageURL;
-  final double smprice, mdprice, lgprice;
+  final double price;
   const FoodDetail({
     Key key,
     @required this.name,
     @required this.imageURL,
-    @required this.smprice,
-    @required this.mdprice,
-    @required this.lgprice,
+    @required this.price,
     @required this.description,
     @required this.index,
   }) : super(key: key);
 
-//   @override
-//   State<FoodDetail> createState() => _FoodDetailState(
-//         name,
-//         smprice,
-//         mdprice,
-//         lgprice,
-//         description,
-//         imageURL,
-//       );
-// }
 
-// class _FoodDetailState extends State<FoodDetail> {
-//   _FoodDetailState(
-//     name,
-//     smprice,
-//     mdprice,
-//     lgprice,
-//     description,
-//     imageURL,
-//   );
   final int index;
-
-//  int get index => Food.foodsAvailable[index];
 
   @override
   Widget build(BuildContext context) {
@@ -168,10 +145,8 @@ class FoodDetail extends StatelessWidget {
                                                 .45,
                                         child: added(
                                           index: index,
-                                          lgprice: lgprice,
+                                          price: price,
                                           name: name,
-                                          smprice: smprice,
-                                          mdprice: mdprice,
                                         ),
                                       ),
                                     ),

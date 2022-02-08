@@ -70,22 +70,23 @@ class _LandingState extends State<Landing> {
           ),
         ),
         drawer: const sidebar(),
-        body: PageView(
-          controller: _pageController,
-          children: const [
-            homeLanding(),
-            favLanding(),
-            searchLanding(),
-            profileLanding(),
-          ],
-          onPageChanged: (index) {
-            setState(
-              () {
-                _pageController.jumpToPage(index);
-              },
-            );
-          },
-        ),
+        body: const homeLanding(),
+        // PageView(
+        //   controller: _pageController,
+        //   children: const [
+        //     homeLanding(),
+        //     favLanding(),
+        //     searchLanding(),
+        //     profileLanding(),
+        //   ],
+        //   onPageChanged: (index) {
+        //     setState(
+        //       () {
+        //         _pageController.jumpToPage(index);
+        //       },
+        //     );
+        //   },
+        // ),
         bottomNavigationBar: SalomonBottomBar(
           duration: const Duration(milliseconds: 1500),
           currentIndex: _currentIndex,

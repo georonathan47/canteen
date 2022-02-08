@@ -1,9 +1,8 @@
-// @dart = v2.7
+// @dart = 2.7
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:test/features/Authentication/presentation/pages/login.dart';
 import 'package:test/splashScreen.dart';
 
 void main() async {
@@ -20,9 +19,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.amber,
+        primaryColorBrightness: Brightness.light,
       ),
-      home: const Login(),
+      home: const SplashScreen(),
     );
   }
 }
