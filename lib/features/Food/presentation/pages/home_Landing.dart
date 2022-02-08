@@ -80,12 +80,13 @@ class _homeLandingState extends State<homeLanding> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => FoodDetail(
-                                name: snapshot.data.dataa[index].foodName,
-                                imageURL: snapshot.data.dataa[index].image,
-                                price: snapshot.data.dataa[index].price,
-                                description:
-                                    snapshot.data.dataa[index].description,
-                                index: index),
+                              name: snapshot.data.dataa[index].foodName,
+                              imageURL: snapshot.data.dataa[index].image,
+                              price: snapshot.data.dataa[index].price,
+                              description:
+                                  snapshot.data.dataa[index].description,
+                              index: index,
+                            ),
                           ),
                         ),
                         child: Card(

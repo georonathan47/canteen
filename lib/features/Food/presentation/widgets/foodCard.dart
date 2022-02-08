@@ -15,11 +15,10 @@ class FoodDetail extends StatelessWidget {
     Key key,
     @required this.name,
     @required this.imageURL,
-    @required this.price,
+    this.price,
     @required this.description,
     @required this.index,
   }) : super(key: key);
-
 
   final int index;
 
