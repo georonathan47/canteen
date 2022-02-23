@@ -1,5 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:test/core/constants/widgetFunction.dart';
 import 'package:test/core/services/firestore.dart';
@@ -12,7 +11,7 @@ class searchLanding extends StatefulWidget {
 }
 
 class _searchLandingState extends State<searchLanding> {
-  final FirestoreDB _firestoreDB = FirestoreDB();
+  // final FirestoreDB _firestoreDB = FirestoreDB();
   final searchController = TextEditingController();
 
   @override
@@ -20,15 +19,15 @@ class _searchLandingState extends State<searchLanding> {
     super.initState();
   }
 
-  QuerySnapshot searchSnapshot;
+  // QuerySnapshot searchSnapshot;
 
-  initiateSearch() {
-    _firestoreDB.getFoodsByName(searchController.text).then((val) => {
-          setState(() {
-            searchSnapshot = val;
-          }),
-        });
-  }
+  // initiateSearch() {
+  //   _firestoreDB.getFoodsByName(searchController.text).then((val) => {
+  //         setState(() {
+  //           // searchSnapshot = val;
+  //         }),
+  //       });
+  // }
 
   Widget searchTile(String foodName, bool available) {
     return Card(

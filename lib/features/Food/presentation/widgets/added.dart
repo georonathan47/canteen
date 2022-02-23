@@ -2,18 +2,16 @@
 
 import 'package:get/get.dart';
 import 'package:test/core/constants/colors.dart';
-import 'package:test/core/constants/widgetFunction.dart';
 import 'package:flutter/material.dart';
 import 'package:test/features/Cart/data/datasources/cartController.dart';
 class added extends StatelessWidget {
-  added({
+  const added({
     Key key,
     @required this.name,
     @required this.price,
-    @required this.index,
+    this.index,
   }) : super(key: key);
-  final String name;
-  final double price;
+  final String name, price;
   final int index;
   CartController get controller => Get.put(CartController(index: index));
 

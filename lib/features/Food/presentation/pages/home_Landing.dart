@@ -10,6 +10,7 @@ import 'package:test/core/constants/widgetFunction.dart';
 import 'package:test/core/shared/makata.api.dart';
 import 'package:test/features/Food/data/models/foodModel.dart';
 import 'package:test/features/Food/presentation/widgets/foodCard.dart';
+import 'package:test/features/Food/presentation/widgets/mainFood.dart';
 
 class homeLanding extends StatefulWidget {
   const homeLanding({Key key}) : super(key: key);
@@ -45,7 +46,7 @@ class _homeLandingState extends State<homeLanding> {
         loading = true;
         _foodsAvailable = info["data"];
       });
-      print(_foodsAvailable);
+      // print(_foodsAvailable);
       return Food.fromJson(jsonDecode(response.body));
     } else {
       throw Exception("Unable to load Menu for the Day!");
@@ -59,7 +60,7 @@ class _homeLandingState extends State<homeLanding> {
         body: Container(
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
-            color: lightGold,
+            color: white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(35),
               topRight: Radius.circular(35),
@@ -81,16 +82,15 @@ class _homeLandingState extends State<homeLanding> {
                           MaterialPageRoute(
                             builder: (context) => FoodDetail(
                               name: snapshot.data.dataa[index].foodName,
-                              imageURL: snapshot.data.dataa[index].image,
-                              price: snapshot.data.dataa[index].price,
+                              imageURL: snapshot.data.dataa[index].image ?? null,
+                              price: snapshot?.data?.dataa[index].price,
                               description:
-                                  snapshot.data.dataa[index].description,
-                              index: index,
+                                  snapshot?.data?.dataa[index].description,
                             ),
                           ),
                         ),
                         child: Card(
-                          color: Colors.transparent,
+                          color: black87,
                           child: SizedBox(
                             height: MediaQuery.of(context).size.height * 0.25,
                             child: Padding(
@@ -99,12 +99,12 @@ class _homeLandingState extends State<homeLanding> {
                                 children: [
                                   !loading
                                       ? Center(
-                                          child: Image.network(snapshot
-                                              ?.data?.dataa[index].image),
+                                          child: Image.asset(
+                                              "assets/images/MAKATA.jpg"),
                                         )
-                                      : const Center(
-                                          child: CircularProgressIndicator
-                                              .adaptive(),
+                                      : Expanded(
+                                          child: Image.asset(
+                                              "assets/images/MAKATA.jpg"),
                                         ),
                                   addVertical(
                                       MediaQuery.of(context).size.height *
@@ -112,18 +112,16 @@ class _homeLandingState extends State<homeLanding> {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10.0),
-                                    child: Expanded(
-                                      child: Align(
-                                        alignment: Alignment.bottomRight,
-                                        child: Text(
-                                          snapshot?.data?.dataa[index].foodName,
-                                          style: GoogleFonts.lato(
-                                            textStyle: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                              color: gold,
-                                              letterSpacing: 1.75,
-                                            ),
+                                    child: Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: Text(
+                                        snapshot?.data?.dataa[index].foodName,
+                                        style: GoogleFonts.lato(
+                                          textStyle: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            color: gold,
+                                            letterSpacing: 1.75,
                                           ),
                                         ),
                                       ),

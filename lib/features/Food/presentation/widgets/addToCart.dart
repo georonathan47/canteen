@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:test/features/Food/data/models/foodModel.dart';
-import 'package:test/features/Food/data/models/foodSelected.dart';
 import 'package:flutter/material.dart';
 
 import 'added.dart';
@@ -26,7 +25,7 @@ class addToCart extends StatelessWidget {
         return added(
           index: index,
           name: foods[index].dataa[index].foodName,
-          price: foods[index].dataa[index].price as double,
+          price: foods[index].dataa[index].price,
         );
       },
     );

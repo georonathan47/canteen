@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 
+import 'package:test/core/constants/colors.dart';
 import 'package:test/core/constants/widgetFunction.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +17,7 @@ class FoodList extends StatefulWidget {
     @required this.index,
   }) : super(key: key);
 
-  final String name, description, imageURL;
-  final double price;
+  final String name, description, imageURL, price;
   final int index;
 
   @override
@@ -56,7 +56,7 @@ class _FoodListState extends State<FoodList> {
                   addHorizontal(20),
                   Expanded(
                     child: Container(
-                      color: Colors.transparent,
+                      color: black87,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[

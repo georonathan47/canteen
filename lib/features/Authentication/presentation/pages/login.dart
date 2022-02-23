@@ -69,7 +69,7 @@ class _LoginState extends State<Login> {
               textStyle: const TextStyle(
                 fontSize: 20,
                 letterSpacing: 1.25,
-                color: white,
+                color: black,
               ),
             ),
           ),
@@ -77,7 +77,7 @@ class _LoginState extends State<Login> {
             TextButton.icon(
               icon: const Icon(
                 Icons.person_outlined,
-                color: white,
+                color: black,
               ),
               label: Text(
                 'Register',
@@ -85,7 +85,7 @@ class _LoginState extends State<Login> {
                   textStyle: const TextStyle(
                     fontSize: 18,
                     letterSpacing: .75,
-                    color: white,
+                    color: black,
                     fontWeight: FontWeight.w700,
                   ),
                 ),

@@ -9,15 +9,14 @@ import 'package:test/features/Food/presentation/widgets/added.dart';
 import 'package:flutter/material.dart';
 
 class FoodDetail extends StatelessWidget {
-  final String name, description, imageURL;
-  final double price;
+  final String name, description, imageURL, price;
   const FoodDetail({
     Key key,
     @required this.name,
-    @required this.imageURL,
-    this.price,
+    this.imageURL,
+    @required this.price,
     @required this.description,
-    @required this.index,
+    this.index,
   }) : super(key: key);
 
   final int index;
@@ -51,6 +50,7 @@ class FoodDetail extends StatelessWidget {
                     child: Stack(
                       children: [
                         Image.network(imageURL),
+                        Container(),
                         Stack(
                           children: [
                             Padding(
@@ -202,7 +202,7 @@ class FoodDetail extends StatelessWidget {
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CartScreen(),
+              builder: (context) => const CartScreen(),
             ),
           ),
           child: const Icon(Icons.shopping_cart, color: white),

@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:test/core/services/firestore.dart';
+// import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+// import 'package:test/core/services/firestore.dart';
 import 'package:test/features/Food/presentation/pages/searches_Landing.dart';
 // import 'package:test/core/constants/colors.dart';
 
