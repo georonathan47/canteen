@@ -8,7 +8,7 @@ import 'package:test/features/Food/presentation/widgets/added.dart';
 
 import 'package:flutter/material.dart';
 
-class FoodDetail extends StatelessWidget {
+class FoodDetail extends StatefulWidget {
   final String name, description, imageURL, price;
   const FoodDetail({
     Key key,
@@ -22,12 +22,17 @@ class FoodDetail extends StatelessWidget {
   final int index;
 
   @override
+  State<FoodDetail> createState() => _FoodDetailState();
+}
+
+class _FoodDetailState extends State<FoodDetail> {
+  @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(name),
+          title: Text(widget.name),
           elevation: 0.0,
         ),
         body: Container(
@@ -49,7 +54,7 @@ class FoodDetail extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 3,
                     child: Stack(
                       children: [
-                        Image.network(imageURL),
+                        // Image.network(imageURL),
                         Container(),
                         Stack(
                           children: [
@@ -69,7 +74,7 @@ class FoodDetail extends StatelessWidget {
                                   ),
                                 ),
                                 child: Text(
-                                  name,
+                                  widget.name,
                                   textAlign: TextAlign.center,
                                   style: themeData.textTheme.headline5.copyWith(
                                     fontSize: 18,
@@ -123,7 +128,7 @@ class FoodDetail extends StatelessWidget {
                                       ),
                                       addVertical(7.5),
                                       Text(
-                                        description,
+                                        widget.description,
                                         style: themeData.textTheme.subtitle1,
                                       ),
                                     ],
@@ -143,9 +148,9 @@ class FoodDetail extends StatelessWidget {
                                             MediaQuery.of(context).size.width *
                                                 .45,
                                         child: added(
-                                          index: index,
-                                          price: price,
-                                          name: name,
+                                          index: widget.index,
+                                          price: widget.price,
+                                          name: widget.name,
                                         ),
                                       ),
                                     ),
@@ -178,15 +183,6 @@ class FoodDetail extends StatelessWidget {
                           // itemCount: _foodsAvailable.length,
                           itemBuilder: (context, index) {
                             return Container();
-                            // return FoodList(
-                            //   index: index,
-                            //   name: foodsAvailable[index].name,
-                            //   description: foodsAvailable[index].description,
-                            //   lgprice: foodsAvailable[index].lgprice,
-                            //   mdprice: foodsAvailable[index].mdprice,
-                            //   smprice: foodsAvailable[index].smprice,
-                            //   imageURL: foodsAvailable[index].imageURL,
-                            // );
                           },
                         ),
                       ),

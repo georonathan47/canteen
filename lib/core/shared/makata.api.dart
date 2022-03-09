@@ -4,11 +4,11 @@ import 'package:test/features/Authentication/data/models/authenticationModel.dar
 import 'package:http/http.dart' as http;
 
 class MakataAPI {
-  var authority = "ktuapi.bsmtsports.com";
+  var authority = "ktu-restaurant.bkayphotosgh.com";
   var token;
 
   Future<http.Response> fetchFoods() async {
-    var authority = "ktuapi.bsmtsports.com";
+    // var authority = "ktu-restaurant.bkayphotosgh.com";
     final url = Uri.http(authority, "/api/food");
     final response = await http.get(url);
     return response;

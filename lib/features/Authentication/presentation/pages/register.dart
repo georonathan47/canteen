@@ -12,8 +12,6 @@ import 'package:test/core/constants/constants.dart';
 import 'package:test/core/constants/widgetFunction.dart';
 import 'package:test/core/shared/loading.dart';
 import 'package:test/core/shared/makata.api.dart';
-// import 'package:test/features/Authentication/data/models/auth.api.dart';
-import 'package:test/features/Authentication/data/models/authenticationModel.dart';
 import 'package:test/landingPage.dart';
 
 class Register extends StatefulWidget {
@@ -275,7 +273,7 @@ class _RegisterState extends State<Register> {
         "confirm_password": confirmPasswordController.text,
         "role": false,
       };
-      var authority = "ktuapi.bsmtsports.com";
+      var authority = "ktu-restaurant.bkayphotosgh.com";
       var response = await _api.authData(userMap, "$authority/api/register");
       var boddy = json.decode(response.body);
       if (boddy['message'] == "Success") {

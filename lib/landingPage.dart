@@ -48,7 +48,7 @@ class _LandingState extends State<Landing> {
       backgroundColor: Colors.blueGrey[200],
       appBar: AppBar(
         elevation: 0.0,
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
           "Makata",

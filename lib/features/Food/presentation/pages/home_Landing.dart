@@ -38,8 +38,9 @@ class _homeLandingState extends State<homeLanding> {
   }
 
   Future<Food> getFood() async {
-    final response =
-        await http.get(Uri.parse("https://ktuapi.bsmtsports.com/api/food"));
+    final response = await http.get(
+      Uri.parse("https://ktu-restaurant.bkayphotosgh.com/api/food"),
+    );
     final info = await json.decode(response.body);
     if (response.statusCode == 200) {
       setState(() {
@@ -71,6 +72,22 @@ class _homeLandingState extends State<homeLanding> {
             child: FutureBuilder(
               future: getFood(),
               builder: (context, snapshot) {
+                if (snapshot.connectionState == loading) {
+                  return Center(
+                    child: Text(
+                      "\t\t\t\t\t\t\t\t\t\t🙊 Oops! 🙊 \nNo Food Product to Display!",
+                      style: GoogleFonts.mcLaren(
+                        textStyle: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: black,
+                          letterSpacing: 1.75,
+                        ),
+                      ),
+                    ),
+                  );
+                }
+
                 if (snapshot.hasData) {
                   return ListView.separated(
                     itemCount: snapshot.data.dataa.length,
@@ -82,7 +99,7 @@ class _homeLandingState extends State<homeLanding> {
                           MaterialPageRoute(
                             builder: (context) => FoodDetail(
                               name: snapshot.data.dataa[index].foodName,
-                              imageURL: snapshot.data.dataa[index].image ?? null,
+                              // imageURL: snapshot.data.dataa[index].image,
                               price: snapshot?.data?.dataa[index].price,
                               description:
                                   snapshot?.data?.dataa[index].description,
@@ -139,11 +156,26 @@ class _homeLandingState extends State<homeLanding> {
                   );
                 }
                 return Center(
-                  child: Column(
-                    children: const [
-                      CircularProgressIndicator.adaptive(),
-                      Text("Fetching data... \n\t\tPlease wait.")
-                    ],
+                  child: SizedBox(
+                    height: 250,
+                    child: Container(
+                      height: 250,
+                      child: Column(
+                        children: [
+                          const CircularProgressIndicator.adaptive(),
+                          Text(
+                            "Fetching data... \n\t\tPlease wait.",
+                            style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: .3,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 );
               },
